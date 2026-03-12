@@ -1,0 +1,15 @@
+kafka_api:
+  sasl:
+    user: superuser # The username used for authentication
+    password: secretpassword # The password associated with the username
+    mechanism: scram-sha-256 # Authentication mechanism; SCRAM-SHA-256 provides secure password-based authentication
+  brokers:
+    - 127.0.0.1:19092 # Broker 1: Accessible on localhost, port 19092
+
+admin_api:
+  addresses:
+    - 127.0.0.1:19644 # Admin API for Broker 1: Accessible on localhost, port 19644
+
+schema_registry:
+  addresses:
+    - 127.0.0.1:18081 # Schema Registry API for Broker 1: Accessible on localhost, port 18081

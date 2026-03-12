@@ -1,0 +1,27 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  build:
+    desc: Build project
+    cmds:
+      - go build -o bin/server ./cmd/server
+
+  run:
+    desc: Run project
+    cmds:
+      - go run ./cmd/server
+
+  test:
+    desc: Run tests
+    cmds:
+      - go test ./...
+
+  lint:
+    desc: Run linter
+    cmds:
+      - go fmt ./...
+      - go vet ./...
