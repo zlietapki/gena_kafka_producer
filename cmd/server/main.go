@@ -2,9 +2,8 @@ package main
 
 import (
 	"context"
-	"log"
-	"os/signal"
-	"syscall"
+	"log/slog"
+	"os"
 
 	"github.com/zlietapki/boilerplate/internal/config"
 	"github.com/zlietapki/boilerplate/internal/kafka"
@@ -16,20 +15,26 @@ func main() {
 
 	kafkaClient, err := kafka.NewClient(cfg.Kafka)
 	if err != nil {
-		log.Fatal(err)
+		slog.Error("kafka init failed", "err", err)
+		os.Exit(1)
 	}
-	defer kafkaClient.Close()
-	defer kafkaClient.Flush(context.Background())
+	defer func() {
+		err = kafkaClient.Stop()
+		if err != nil {
+			slog.Error("kafka client stop failed", "err", err)
+		}
+	}()
 
-	producer := kafka.NewProducer(kafkaClient)
+	producer := kafka.NewProducer(kafkaClient.Kgo())
+
 	uc := usecase.New(usecase.Depends{
 		EventPublisher: producer,
 	})
 
-	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
-	defer stop()
+	ctx := context.Background()
 
 	if err = uc.Example(ctx); err != nil {
-		log.Fatal(err)
+		slog.Error("usecase failed", "err", err)
+		os.Exit(1)
 	}
 }

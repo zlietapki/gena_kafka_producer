@@ -1,7 +1,8 @@
 package config
 
 import (
-	"log"
+	"log/slog"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
@@ -20,7 +21,8 @@ func New() Config {
 	var cfg Config
 	err := envconfig.Process("", &cfg)
 	if err != nil {
-		log.Fatal(err.Error())
+		slog.Error("config parse failed", "err", err)
+		os.Exit(1)
 	}
 
 	return cfg
