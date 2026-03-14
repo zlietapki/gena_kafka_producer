@@ -1,0 +1,10 @@
+# start name:common
+services:
+  server:
+    build: .
+    ports:
+      # start name:ports type:merge
+      - "8080:8080"
+    # start name:post_ports
+    env_file:
+      - .env

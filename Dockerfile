@@ -1,3 +1,4 @@
+#start name:common
 # Builder stage
 FROM golang:1.26.1-alpine3.23 AS builder
 
@@ -20,3 +21,4 @@ WORKDIR /app
 COPY --from=builder /app/server .
 
 CMD ["./server"]
+

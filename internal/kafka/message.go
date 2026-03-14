@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/twmb/franz-go/pkg/kgo"
-	"github.com/zlietapki/boilerplate/internal/domain"
+	"github.com/zlietapki/gena/internal/domain"
 )
 
 func toKgoRecord(e domain.Event) (*kgo.Record, error) {

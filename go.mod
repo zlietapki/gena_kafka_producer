@@ -1,4 +1,4 @@
-module github.com/zlietapki/boilerplate
+module github.com/zlietapki/gena
 
 go 1.26.1
 
@@ -6,7 +6,6 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/twmb/franz-go v1.20.7
-	golang.org/x/sync v0.20.0
 )
 
 require (

@@ -1,11 +1,6 @@
+# start name:common
 services:
-  server:
-    build: .
-    ports:
-      - "8080:8080"
-    env_file:
-      - .env
-
+  # start name:redpanda
   redpanda-0:
     image: redpandadata/redpanda:v25.3.10
     container_name: redpanda-0

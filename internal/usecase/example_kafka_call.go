@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/zlietapki/boilerplate/internal/domain"
+	"github.com/zlietapki/gena/internal/domain"
 )
 
 func (u Usecase) Example(ctx context.Context) error {

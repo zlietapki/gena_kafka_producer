@@ -6,7 +6,7 @@ import (
 	"sync"
 
 	"github.com/twmb/franz-go/pkg/kgo"
-	"github.com/zlietapki/boilerplate/internal/domain"
+	"github.com/zlietapki/gena/internal/domain"
 )
 
 type Producer struct {
