@@ -8,15 +8,16 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
+
 	"github.com/zlietapki/gena/internal/kafka"
 )
 
-// start name:post_import
+// start name:config_struct
 type Config struct {
 	Env string `envconfig:"ENV"`
-	//start name:conf type:add
+	//start name:config_fields type:add
 	Kafka kafka.Config
-	//start name:rest
+	//start name:post_config_fields
 }
 
 func New() Config {
