@@ -41,6 +41,8 @@ tasks:
       - tools
     cmds:
       - PATH=$BIN_PATH go generate ./...
+      # start name:generate_cmds type:merge
+      # start name:post_generate_cmds
 
   test:
     desc: Run tests
